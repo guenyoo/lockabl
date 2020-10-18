@@ -1,5 +1,6 @@
 <template>
   <input
+    class="c-input"
     :type=type
     :placeholder=placeholder
   >
@@ -20,6 +21,15 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import '@/scss/colors.scss';
 
+.c-input {
+  padding: 5px;
+  max-width: 335px;
+  width: 100%;
+  height: 40px;
+  border: 1px solid #DBDBDB;
+  background: $white;
+}
 </style>
