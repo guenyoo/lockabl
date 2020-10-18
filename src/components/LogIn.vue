@@ -7,6 +7,11 @@
       type="text"
       placeholder="My E-Mail address"
     />
+    <Input
+      type="password"
+      placeholder="My password"
+      distance="large"
+    />
   </div>
 </template>
 

@@ -1,6 +1,7 @@
 <template>
   <input
     class="c-input"
+    :class="{ 'c-input--large': distance }"
     :type=type
     :placeholder=placeholder
   >
@@ -17,6 +18,10 @@ export default {
       type: String,
       required: true,
     },
+    distance: {
+      type: String,
+      default: '',
+    },
   },
 };
 </script>
@@ -25,11 +30,18 @@ export default {
 @import '@/scss/colors.scss';
 
 .c-input {
+  border-radius: 5px;
+  display: block;
+  margin: 10px auto;
   padding: 5px;
   max-width: 335px;
   width: 100%;
   height: 40px;
   border: 1px solid #DBDBDB;
   background: $white;
+
+  &--large {
+    margin-bottom: 40px;
+  }
 }
 </style>
