@@ -11,5 +11,21 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
+    user: {
+      namespaced: true,
+      state: {
+        userAuthenticated: false,
+      },
+      mutations: {
+        userAuthenticated(state) {
+          state.userAuthenticated = true;
+        },
+      },
+      actions: {
+        authenticateUser({ commit }) {
+          commit('userAuthenticated');
+        },
+      },
+    },
   },
 });

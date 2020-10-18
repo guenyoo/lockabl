@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import store from '@/store';
 import Home from '../views/Home.vue';
 import LogIn from '../views/LogIn.vue';
 
@@ -23,6 +24,15 @@ const routes = [
 
 const router = new VueRouter({
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  console.log(to, store.state.user.userAuthenticated);
+  if (to.name !== 'LogIn' && !store.state.user.userAuthenticated) {
+    next({ name: 'LogIn' });
+  } else {
+    next();
+  }
 });
 
 export default router;
