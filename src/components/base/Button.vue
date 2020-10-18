@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import { COLORS } from '@/config/colors';
+
 export default {
   props: {
     text: {
@@ -38,14 +40,14 @@ export default {
   computed: {
     disabledCheckBackgroundColor() {
       if (this.disabled) {
-        return '#cdcdcd';
+        return COLORS.GREY;
       }
 
       return `linear-gradient(180deg, ${this.colorOne} 0%, ${this.colorTwo} 100%)`;
     },
     disabledCheckColorText() {
       if (this.disabled) {
-        return '#8c8c8c';
+        return COLORS.GREYDARK;
       }
 
       return this.colorText;
