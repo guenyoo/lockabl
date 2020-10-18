@@ -18,6 +18,11 @@
       :colorText="COLORS.PRIMARY"
       text="<strong>Sign me in</strong>"
     />
+    <p>or</p>
+    <div class="c-login__account-wrapper">
+      <a href="#" alt="Go to Password reset">I forgot my password</a>
+      <a href="#" alt="Go to Account creation">Create an account</a>
+    </div>
   </div>
 </template>
 
@@ -39,6 +44,13 @@ export default {
 };
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.c-login {
+  &__account-wrapper {
+    display: flex;
+    justify-content: space-between;
+    max-width: 335px;
+    margin: 0 auto;
+  }
+}
 </style>
