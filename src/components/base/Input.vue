@@ -33,7 +33,7 @@ export default {
   border-radius: 5px;
   display: block;
   margin: 10px auto;
-  padding: 5px;
+  padding: 0 10px;
   max-width: 335px;
   width: 100%;
   height: 40px;
