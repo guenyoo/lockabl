@@ -20,6 +20,7 @@
       :colorText="COLORS.PRIMARY"
       text="<strong>Sign me in</strong>"
       :disabled="isDisabled"
+      @click.native="$router.push('home')"
     />
     <p>or</p>
     <div class="c-login__account-wrapper">

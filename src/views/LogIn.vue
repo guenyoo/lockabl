@@ -6,7 +6,7 @@
       alt="Welcome to Lockabl"
       class="login__logo"
     >
-    <LogIn msg="Welcome to Your Vue.js App"/>
+    <LogIn />
   </div>
 </template>
 
