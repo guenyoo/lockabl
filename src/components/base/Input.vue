@@ -4,6 +4,7 @@
     :class="{ 'c-input--large': distance }"
     :type=type
     :placeholder=placeholder
+    @input="$emit('input-change', { type, value: $event.target.value })"
   >
 </template>
 

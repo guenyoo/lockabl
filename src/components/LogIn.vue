@@ -6,17 +6,20 @@
     <Input
       type="text"
       placeholder="My E-Mail address"
+      @input-change="handleInputChange($event)"
     />
     <Input
       type="password"
       placeholder="My password"
       distance="large"
+      @input-change="handleInputChange($event)"
     />
     <Button
       colorOne="#C2F0FF"
       colorTwo="#A3E8FF"
       :colorText="COLORS.PRIMARY"
       text="<strong>Sign me in</strong>"
+      :disabled="isDisabled"
     />
     <p>or</p>
     <div class="c-login__account-wrapper">
@@ -39,7 +42,27 @@ export default {
   data() {
     return {
       COLORS,
+      email: '',
+      password: '',
     };
+  },
+  computed: {
+    isDisabled() {
+      if (!(this.email && this.password)) {
+        return true;
+      }
+
+      return false;
+    },
+  },
+  methods: {
+    handleInputChange({ type, value }) {
+      if (type === 'text') {
+        this.email = value;
+      } else {
+        this.password = value;
+      }
+    },
   },
 };
 </script>
