@@ -3,6 +3,7 @@
     class="c-input"
     :class="{ 'c-input--large': distance }"
     :type=type
+    :id="`input${type}`"
     :placeholder=placeholder
     @input="$emit('input-change', { type, value: $event.target.value })"
   >

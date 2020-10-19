@@ -4,25 +4,30 @@
       <p class="c-login__label">
         Please <strong>log in</strong> to your account
       </p>
-      <Input
-        type="text"
-        placeholder="My E-Mail address"
-        @input-change="handleInputChange($event)"
-      />
-      <Input
-        type="password"
-        placeholder="My password"
-        distance="large"
-        @input-change="handleInputChange($event)"
-      />
-      <Button
-        colorOne="#C2F0FF"
-        colorTwo="#A3E8FF"
-        :colorText="COLORS.PRIMARY"
-        text="<strong>Sign me in</strong>"
-        :disabled="isDisabled"
-        @click.native="setUserLoggedIn()"
-      />
+      <form>
+        <Input
+          type="email"
+          placeholder="My E-Mail address"
+          @input-change="handleInputChange($event)"
+          required
+        />
+        <Input
+          type="password"
+          placeholder="My password"
+          distance="large"
+          @input-change="handleInputChange($event)"
+          required
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+        />
+        <Button
+          colorOne="#C2F0FF"
+          colorTwo="#A3E8FF"
+          :colorText="COLORS.PRIMARY"
+          text="<strong>Sign me in</strong>"
+          :disabled="isDisabled"
+          @click.native="setUserLoggedIn()"
+        />
+      </form>
       <p>or</p>
       <div class="c-login__account-wrapper">
         <a href="#" alt="Go to Password reset">I forgot my password</a>
@@ -66,7 +71,7 @@ export default {
   methods: {
     ...mapActions('user', ['authenticateUser']),
     handleInputChange({ type, value }) {
-      if (type === 'text') {
+      if (type === 'email') {
         this.email = value;
       } else {
         this.password = value;
