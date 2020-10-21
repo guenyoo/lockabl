@@ -1,9 +1,9 @@
 <template>
-  <div
-    class="accordeon"
-    @click="toggle()"
-  >
-    <div class="accordeon__title">
+  <div class="accordeon">
+    <div
+      class="accordeon__title"
+      @click="toggle()"
+    >
       <img
         :class="['accordeon__triangle', toggled ? 'accordeon__triangle--toggled' : '']"
         src="@/assets/triangle.svg"
