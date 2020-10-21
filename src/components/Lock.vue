@@ -10,6 +10,10 @@
     ]"
     @click="showDetails(id)"
   >
+    <i
+      class="lock__icon icofont-pencil-alt-2"
+      v-if="isEdit"
+    />
     <h1
       class="lock__name"
       :class="{ 'lock__name--is-large': isLarge }"
@@ -31,6 +35,10 @@ export default {
     id: {
       type: Number,
       required: true,
+    },
+    isEdit: {
+      type: Boolean,
+      default: false,
     },
     isFavorite: {
       type: Boolean,
@@ -137,6 +145,16 @@ export default {
     .lock__favorite {
       display: none;
     }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 30px;
+    transform: translate(-50%, -50%);
   }
 
   @media (any-hover: hover) {

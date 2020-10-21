@@ -13,6 +13,7 @@
         :isFavorite="lockDetails.favorite"
         :hasConnectivity="!!lockDetails.connectivity"
         isLarge
+        isEdit
       />
       <div class="v-locks__signal signal">
         <p class="signal__headline">Signal Strength</p>
@@ -24,11 +25,47 @@
         <p class="signal__value">{{ signalStrength.toFixed(0) }}%</p>
       </div>
     </div>
-    <div>
+    <div class="v-locks__buttons">
       <Button
         text="textByStatus()"
         colorText="#00ff00"
         colorBackground="green"
+      />
+      <Button
+        text="textByFavorites"
+        :colorText="COLORS.PRIMARY"
+        colorBackground="blue"
+      />
+      <Button
+        text="textBySharing"
+        :colorText="COLORS.PRIMARY"
+        colorBackground="blue"
+      />
+    </div>
+    <div class="v-locks__shared">
+      <p class="v-locks__label">This lock is currently <strong>shared with</strong>:</p>
+      <Lock
+        :id="lockDetails.id"
+        :color="lockDetails.color"
+        :key="lockDetails.name"
+        :name="lockDetails.name"
+        :isFavorite="lockDetails.favorite"
+        :hasConnectivity="!!lockDetails.connectivity"
+        isLarge
+        isEdit
+      />
+    </div>
+    <div class="v-locks__help">
+      <p class="v-locks__label">Do you <strong>need help</strong> with this lock?</p>
+      <Button
+        text="Get help from support (opens Browser)"
+        :colorText="COLORS.PRIMARY"
+        colorBackground="yellow"
+      />
+      <Button
+        text="FAQ pages (opens browser)"
+        :colorText="COLORS.PRIMARY"
+        colorBackground="yellow"
       />
     </div>
   </div>
@@ -39,6 +76,7 @@ import { mapState } from 'vuex';
 import Back from '@/components/Back.vue';
 import Lock from '@/components/Lock.vue';
 import Button from '@/components/base/Button.vue';
+import { COLORS } from '@/config/colors';
 
 export default {
   name: 'LockDetailView',
@@ -55,6 +93,7 @@ export default {
   },
   data() {
     return {
+      COLORS,
       signalStrength: 0,
       interval: '',
     };
@@ -96,12 +135,14 @@ export default {
 
 .v-locks {
   &__headline {
+    text-align: left;
     font-size: 36px;
   }
 
   &__content {
     position: relative;
     display: flex;
+    margin-bottom: 20px;
   }
 
   .icofont-wifi {

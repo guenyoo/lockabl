@@ -57,6 +57,7 @@ export default {
   border: none;
   font-size: 18px;
   cursor: pointer;
+  margin-bottom: 20px;
 
   &--disabled {
     background-color: #cdcdcd;
