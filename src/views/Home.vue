@@ -25,16 +25,15 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex';
 import Accordeon from '@/components/Accordeon.vue';
 import Header from '@/components/Header/Header.vue';
 import Lock from '@/components/Lock.vue';
-import { LOCKS } from '@/config/locks';
 
 export default {
   name: 'Home',
   data() {
     return {
-      LOCKS,
       categories: [
         {
           title: 'Locks near you',
@@ -57,15 +56,8 @@ export default {
     Lock,
   },
   computed: {
-    locksSortedByConnectivity() {
-      return LOCKS.sort((a, b) => b.connectivity - a.connectivity);
-    },
-    locksWithoutConnectivity() {
-      return LOCKS.filter((lock) => lock.connectivity === 0);
-    },
-    sharedLocks() {
-      return LOCKS.filter((lock) => lock.sharedWith.length > 0);
-    },
+    ...mapState('lockStore', ['locks']),
+    ...mapGetters('lockStore', ['locksSortedByConnectivity', 'locksWithoutConnectivity', 'sharedLocks']),
     filteredCategories() {
       return this.categories.filter((category) => category.locks.length);
     },

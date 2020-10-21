@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import { LOCKS } from '../config/locks';
 
 Vue.use(Vuex);
 
@@ -32,6 +33,18 @@ export default new Vuex.Store({
         logout({ commit }) {
           commit('logout');
         },
+      },
+    },
+    lockStore: {
+      namespaced: true,
+      state: {
+        locks: LOCKS,
+      },
+      getters: {
+        locksSortedByConnectivity:
+          (state) => state.locks.sort((a, b) => b.connectivity - a.connectivity),
+        locksWithoutConnectivity: (state) => state.locks.filter((lock) => lock.connectivity === 0),
+        sharedLocks: (state) => state.locks.filter((lock) => lock.sharedWith.length > 0),
       },
     },
   },
