@@ -107,7 +107,7 @@ export default {
 
   &__img {
     width: 170px;
-    height: 170px;
+    height: 134px;
   }
 
   &__value {

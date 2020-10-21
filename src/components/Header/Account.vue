@@ -1,6 +1,13 @@
 <template>
-  <div @click="routeToLogout()">
-    Account
+  <div
+    @click="routeToLogout()"
+    class="account"
+  >
+    <img
+      class="account__icon"
+      src="@/assets/svgs/user.svg"
+      alt=""
+    >
   </div>
 </template>
 
@@ -15,6 +22,16 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import '@/scss/colors.scss';
 
+.account {
+  cursor: pointer;
+
+  &__icon {
+    width: 20px;
+    height: 20px;
+    color: $primary;
+  }
+}
 </style>

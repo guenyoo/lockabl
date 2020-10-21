@@ -77,6 +77,10 @@ export default {
   position: relative;
   background: linear-gradient(180deg, #C4C4C4 0%, #A6A6A6 100%);
   margin: 0 10px 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
 
   &--purple {
     background: radial-gradient(80.71% 158.59% at 50% 112.12%, #FF63F9 0%, #BE34FF 100%);
@@ -102,8 +106,10 @@ export default {
     font-size: 18px;
     text-align: center;
     vertical-align: middle;
-    line-height: 100px;
     margin: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-height: 90px;
 
     text-shadow:
     -1px -1px 0 white,

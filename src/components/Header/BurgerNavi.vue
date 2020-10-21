@@ -1,6 +1,6 @@
 <template>
-  <div>
-    BurgerNavi
+  <div class="burger-nav">
+    <i class="icofont-navigation-menu"></i>
   </div>
 </template>
 
@@ -10,6 +10,11 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import '@/scss/colors.scss';
 
+.burger-nav {
+  font-size: 24px;
+  color: $primary;
+}
 </style>

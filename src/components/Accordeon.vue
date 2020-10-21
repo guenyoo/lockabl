@@ -37,13 +37,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.accordeon__triangle {
-  max-width: 20px;
-  transition: .3s transform ease-out;
-  margin-right: 10px;
+.accordeon {
+  margin-bottom: 20px;
+
+  &__triangle {
+    max-width: 20px;
+    transition: .3s transform ease-out;
+    margin-right: 10px;
+  }
 
   &--toggled {
     transform: rotate(-90deg);
+  }
+
+  &__title {
+    text-align: left;
+    margin-bottom: 10px;
   }
 }
 </style>

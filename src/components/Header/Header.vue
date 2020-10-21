@@ -33,7 +33,8 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 10px;
+  margin-bottom: 20px;
 
   &__logo {
     position: absolute;
