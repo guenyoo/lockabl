@@ -1,9 +1,12 @@
 <template>
   <div
     class="lock"
-    :class="[{
-      'lock--not-in-range': !hasConnectivity,
-    }]"
+    :class="[
+      {
+        'lock--not-in-range': !hasConnectivity,
+      },
+      hasColor,
+    ]"
   >
     <h1
       class="lock__name"
@@ -33,6 +36,15 @@ export default {
     name: {
       type: String,
       required: true,
+    },
+    color: {
+      type: String,
+      default: '',
+    },
+  },
+  computed: {
+    hasColor() {
+      return this.color ? `lock--${this.color}` : '';
     },
   },
 };
@@ -90,6 +102,13 @@ export default {
     position: absolute;
     width: 10px;
     height: 10px;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: $primary;
+      cursor: pointer;
+    }
   }
 }
 </style>

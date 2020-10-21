@@ -14,7 +14,7 @@ const LOCKS = [
     name: 'Scooter',
     connectivity: 0,
     img: false,
-    color: 'blue',
+    color: 'purple',
     status: 'locked',
     favorite: false,
     sharedWith: [],

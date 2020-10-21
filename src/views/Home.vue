@@ -12,6 +12,7 @@
         <div class="home__flex-wrapper">
           <Lock
           v-for="lock in category.locks"
+          :color="lock.color"
           :key="lock.name"
           :name="lock.name"
           :isFavorite="lock.favorite"
