@@ -31,7 +31,6 @@ export default {
   methods: {
     toggle() {
       this.toggled = !this.toggled;
-      console.log(this.toggled);
     },
   },
 };
