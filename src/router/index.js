@@ -3,15 +3,11 @@ import VueRouter from 'vue-router';
 import store from '@/store';
 import Home from '../views/Home.vue';
 import LogIn from '../views/LogIn.vue';
+import Logout from '../views/Logout.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: '/',
-    name: 'LogIn',
-    component: LogIn,
-  },
   {
     path: '/home',
     name: 'Home',
@@ -20,11 +16,23 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: Home,
   },
+  {
+    path: '/',
+    name: 'LogIn',
+    component: LogIn,
+  },
+  {
+    path: '/logout',
+    name: 'LogOut',
+    component: Logout,
+  },
 ];
 
 const router = new VueRouter({
   routes,
 });
+
+router.replace('/Home');
 
 router.beforeEach((to, from, next) => {
   if (to.name !== 'LogIn' && !store.state.user.userAuthenticated) {

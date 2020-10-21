@@ -14,16 +14,23 @@ export default new Vuex.Store({
     user: {
       namespaced: true,
       state: {
-        userAuthenticated: false,
+        // TODO: change this to false
+        userAuthenticated: true,
       },
       mutations: {
         userAuthenticated(state) {
           state.userAuthenticated = true;
         },
+        logout(state) {
+          state.userAuthenticated = false;
+        },
       },
       actions: {
         authenticateUser({ commit }) {
           commit('userAuthenticated');
+        },
+        logout({ commit }) {
+          commit('logout');
         },
       },
     },
