@@ -7,6 +7,7 @@
       },
       hasColor,
     ]"
+    @click="showDetails(id)"
   >
     <h1
       class="lock__name"
@@ -25,6 +26,10 @@
 export default {
   name: 'Lock',
   props: {
+    id: {
+      type: Number,
+      required: true,
+    },
     isFavorite: {
       type: Boolean,
       default: false,
@@ -45,6 +50,11 @@ export default {
   computed: {
     hasColor() {
       return this.color ? `lock--${this.color}` : '';
+    },
+  },
+  methods: {
+    showDetails(id) {
+      this.$router.push(`/locks/${id}`);
     },
   },
 };

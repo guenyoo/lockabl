@@ -4,6 +4,7 @@ import store from '@/store';
 import Home from '../views/Home.vue';
 import LogIn from '../views/LogIn.vue';
 import Logout from '../views/Logout.vue';
+import Locks from '../views/Locks.vue';
 
 Vue.use(VueRouter);
 
@@ -25,6 +26,11 @@ const routes = [
     path: '/logout',
     name: 'LogOut',
     component: Logout,
+  },
+  {
+    path: '/locks/:lockId',
+    name: 'Locks',
+    component: Locks,
   },
 ];
 
