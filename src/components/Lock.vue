@@ -4,6 +4,7 @@
     :class="[
       {
         'lock--not-in-range': !hasConnectivity,
+        'lock--is-large': isLarge,
       },
       hasColor,
     ]"
@@ -11,6 +12,7 @@
   >
     <h1
       class="lock__name"
+      :class="{ 'lock__name--is-large': isLarge }"
       v-text="name"
     />
     <span
@@ -45,6 +47,10 @@ export default {
     color: {
       type: String,
       default: '',
+    },
+    isLarge: {
+      type: Boolean,
+      default: false,
     },
   },
   computed: {
@@ -112,6 +118,19 @@ export default {
     position: absolute;
     width: 10px;
     height: 10px;
+  }
+
+  &--is-large {
+    width: 170px;
+    height: 170px;
+
+    .lock__name {
+      display: none;
+    }
+
+    .lock__favorite {
+      display: none;
+    }
   }
 
   @media (any-hover: hover) {

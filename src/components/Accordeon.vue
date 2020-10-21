@@ -6,7 +6,7 @@
     >
       <img
         :class="['accordeon__triangle', toggled ? 'accordeon__triangle--toggled' : '']"
-        src="@/assets/triangle.svg"
+        src="@/assets/svgs/triangle.svg"
         alt=""
       >
       <slot name="title" />
