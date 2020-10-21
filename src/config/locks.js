@@ -27,7 +27,13 @@ const LOCKS = [
     color: 'red',
     status: 'unlocked',
     favorite: true,
-    sharedWith: [{ name: 'Mama', userId: 12 }],
+    sharedWith: [
+      {
+        name: 'Mama',
+        userId: 12,
+        color: 'green',
+      },
+    ],
   },
 ];
 

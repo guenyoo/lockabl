@@ -2,7 +2,7 @@
   <div class="v-locks">
     <Back />
     <h1 class="v-locks__headline">
-      {{ lockDetails.name }} <i class="icofont-pencil-alt-2 icofont"></i>
+      {{ lockDetails.name }} <i class="icofont-pencil-alt-2 icofont" />
     </h1>
     <div class="v-locks__content">
       <Lock
@@ -42,18 +42,28 @@
         colorBackground="blue"
       />
     </div>
-    <div class="v-locks__shared">
-      <p class="v-locks__label">This lock is currently <strong>shared with</strong>:</p>
-      <Lock
-        :id="lockDetails.id"
-        :color="lockDetails.color"
-        :key="lockDetails.name"
-        :name="lockDetails.name"
-        :isFavorite="lockDetails.favorite"
-        :hasConnectivity="!!lockDetails.connectivity"
-        isLarge
-        isEdit
-      />
+    <div
+      class="v-locks__shared shared"
+      v-if="lockDetails.sharedWith.length"
+    >
+      <p class="v-locks__label shared__label">
+        This lock is currently <strong>shared with</strong>:
+      </p>
+      <div class="shared__content">
+        <Lock
+          class="shared__lock"
+          v-for="sharedLock of lockDetails.sharedWith"
+          :key="sharedLock.userId"
+          :id="lockDetails.id"
+          :color="sharedLock.color"
+          :name="sharedLock.name"
+          :hasConnectivity="true"
+        />
+        <Button
+          text="Revoke Access"
+          :colorText="COLORS.PRIMARY"
+        />
+      </div>
     </div>
     <div class="v-locks__help">
       <p class="v-locks__label">Do you <strong>need help</strong> with this lock?</p>
@@ -148,6 +158,10 @@ export default {
   .icofont-wifi {
     font-size: 170px;
   }
+
+  &__label {
+    text-align: left;
+  }
 }
 
 .signal {
@@ -163,6 +177,19 @@ export default {
   &__value {
     font-weight: bold;
     margin: 0;
+  }
+}
+
+.shared {
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__lock {
+    flex-basis: 100px;
+    flex-shrink: 0;
   }
 }
 </style>
