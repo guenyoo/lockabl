@@ -24,6 +24,13 @@
         <p class="signal__value">{{ signalStrength.toFixed(0) }}%</p>
       </div>
     </div>
+    <div>
+      <Button
+        text="textByStatus()"
+        colorText="#00ff00"
+        colorBackground="green"
+      />
+    </div>
   </div>
 </template>
 
@@ -31,6 +38,7 @@
 import { mapState } from 'vuex';
 import Back from '@/components/Back.vue';
 import Lock from '@/components/Lock.vue';
+import Button from '@/components/base/Button.vue';
 
 export default {
   name: 'LockDetailView',
@@ -43,6 +51,7 @@ export default {
   components: {
     Back,
     Lock,
+    Button,
   },
   data() {
     return {

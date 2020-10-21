@@ -1,10 +1,12 @@
 <template>
   <button
     class="button"
-    :class="{ 'button--disabled': disabled }"
+    :class="[
+      { 'button--disabled': disabled },
+      colorBackground ? `button--${colorBackground}` : '',
+    ]"
     :style="{
       background: disabledCheckBackgroundColor,
-      color: disabledCheckColorText,
     }"
     v-html=text
     :disabled="disabled"
@@ -20,11 +22,7 @@ export default {
       type: String,
       required: true,
     },
-    colorOne: {
-      type: String,
-      required: true,
-    },
-    colorTwo: {
+    colorBackground: {
       type: String,
       required: true,
     },
@@ -45,21 +43,15 @@ export default {
 
       return `linear-gradient(180deg, ${this.colorOne} 0%, ${this.colorTwo} 100%)`;
     },
-    disabledCheckColorText() {
-      if (this.disabled) {
-        return COLORS.GREYDARK;
-      }
-
-      return this.colorText;
-    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+@import '@/scss/colors.scss';
+
 .button {
   height: 48px;
-  max-width: 335px;
   width: 100%;
   border-radius: 5px;
   border: none;
@@ -70,6 +62,26 @@ export default {
     background-color: #cdcdcd;
     pointer-events: none;
     cursor: not-allowed;
+  }
+
+  &--blue {
+    background: linear-gradient(180deg, #C2F0FF 0%, #A3E8FF 100%);
+    color: $primary;
+  }
+
+  &--yellow {
+    background: linear-gradient(180deg, #FFF9C2 0%, #FFD43C 100%);
+    color: $yellow;
+  }
+
+  &--red {
+    background: radial-gradient(80.71% 158.59% at 50% 112.12%, #FF0000 0%, #FF0000 100%);
+    color: $red;
+  }
+
+  &--green {
+    background: linear-gradient(180deg, #86EC8A 0%, #35CD69 100%);
+    color: $green;
   }
 }
 </style>
