@@ -37,7 +37,7 @@
           colorText="#00ff00"
           colorBackground="green"
           :disabled="checkStatus"
-          @click.native="alert('add unlock implementation')"
+          @click.native="changeStatusOfLock()"
         />
         <Button
           :text="textByFavorites"
@@ -64,7 +64,6 @@
             class="shared__loop"
             v-for="sharedLock of lockDetails.sharedWith"
             :key="sharedLock.userId"
-
           >
             <Lock
               class="shared__lock"
@@ -187,9 +186,24 @@ export default {
     },
   },
   methods: {
-    ...mapActions('lockStore', ['removeFromShared']),
+    ...mapActions('lockStore', ['removeFromShared', 'changeLockStatus']),
     alert(msg) {
       window.alert(msg);
+    },
+    changeStatusOfLock() {
+      if (this.lockDetails.status === 'locked') {
+        this.changeLockStatus({
+          lockId: this.lockDetails.id,
+          newStatus: 'unlocking',
+        });
+
+        setTimeout(() => {
+          this.changeLockStatus({
+            lockId: this.lockDetails.id,
+            newStatus: 'unlocked',
+          });
+        }, 1000);
+      }
     },
   },
   mounted() {

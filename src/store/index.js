@@ -58,10 +58,16 @@ export default new Vuex.Store({
             arr: sharedLocksWithSpecificLockRemoved,
           });
         },
+        changeLockStatus({ commit }, { lockId, newStatus }) {
+          commit('changeLockStatus', { lockId, newStatus });
+        },
       },
       mutations: {
         setSharedAccess(state, { id, arr }) {
           state.locks.find((lock) => lock.id === id).sharedWith = arr;
+        },
+        changeLockStatus(state, { lockId, newStatus }) {
+          state.locks.find((lock) => lock.id === lockId).status = newStatus;
         },
       },
     },
