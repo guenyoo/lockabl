@@ -19,9 +19,10 @@ I've added an example test file lock.spec.js which creates or checks for a snaps
 ## What's missing
 - Impressum Page (because it's just an example really, but a website needs one)
 - Sort functionality on home path
-- Button functionalities on details page
+- Some Button functionalities on details page
 - Change image / color of lock
 - Change title of lock
+- Burger Navigation (Because of lack of content)
 
 Obviously this is intended to be a web page, so the note to add links in the browser are just meant to be included if this is going to be launched as an app. That's the only reason I left it in – I had the app in mind.
 
