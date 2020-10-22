@@ -1,12 +1,14 @@
 <template>
   <div class="login">
-    <h1 class="login__headline"><strong>Welcome</strong> to</h1>
-    <img
-      src="@/assets/lockable_logo.png"
-      alt="Welcome to Lockabl"
-      class="login__logo"
-    >
-    <LogIn />
+    <div class="u-content">
+      <h1 class="login__headline"><strong>Welcome</strong> to</h1>
+      <img
+        src="@/assets/lockable_logo.png"
+        alt="Welcome to Lockabl"
+        class="login__logo"
+      >
+      <LogIn />
+    </div>
     <Footer />
   </div>
 </template>
@@ -26,6 +28,8 @@ export default {
 
 <style lang="scss" scoped>
 .login {
+  padding-top: 40px;
+
   &__headline {
     font-size: 18px;
     font-weight: 400;

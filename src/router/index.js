@@ -38,8 +38,6 @@ const router = new VueRouter({
   routes,
 });
 
-router.replace('/Home');
-
 router.beforeEach((to, from, next) => {
   if (to.name !== 'LogIn' && !store.state.user.userAuthenticated) {
     next({ name: 'LogIn' });

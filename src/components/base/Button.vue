@@ -5,9 +5,6 @@
       { 'button--disabled': disabled },
       colorBackground ? `button--${colorBackground}` : '',
     ]"
-    :style="{
-      background: disabledCheckBackgroundColor,
-    }"
     v-html=text
     :disabled="disabled"
   />
@@ -85,7 +82,7 @@ export default {
   }
 
   &--disabled {
-    background-color: #cdcdcd;
+    background: linear-gradient(180deg, #D8E0D8 0%, #CFCFCF 100%);
     color: $neutral;
     pointer-events: none;
     cursor: not-allowed;

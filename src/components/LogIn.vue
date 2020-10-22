@@ -20,8 +20,7 @@
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
         />
         <Button
-          colorOne="#C2F0FF"
-          colorTwo="#A3E8FF"
+          colorBackground="blue"
           :colorText="COLORS.PRIMARY"
           text="<strong>Sign me in</strong>"
           :disabled="isDisabled"
@@ -87,6 +86,8 @@ export default {
 
 <style lang="scss" scoped>
 .c-login {
+  margin-bottom: 40px;
+
   &__account-wrapper {
     display: flex;
     justify-content: space-between;
