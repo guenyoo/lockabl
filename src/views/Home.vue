@@ -8,7 +8,7 @@
         :key="category.title"
       >
         <template v-slot:title>
-          <span>{{ category.title }}</span>
+          <span v-html="category.title" />
         </template>
         <template v-slot:content>
           <div class="home__flex-wrapper">
@@ -45,15 +45,15 @@ export default {
     return {
       categories: [
         {
-          title: 'Locks near you',
+          title: 'Locks <strong>near you</strong>',
           locks: [],
         },
         {
-          title: 'Locks without connectivity',
+          title: 'Locks <strong>without connectivity</strong>',
           locks: [],
         },
         {
-          title: 'Friends and Family shared locks',
+          title: '<strong>Friends</strong> and <strong>Family shared</strong> locks',
           locks: [],
         },
       ],

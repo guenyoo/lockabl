@@ -53,6 +53,7 @@ export default {
   &__title {
     text-align: left;
     margin-bottom: 10px;
+    font-size: 18px;
   }
 }
 </style>
