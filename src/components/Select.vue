@@ -9,17 +9,47 @@
     <select
       class="select__content"
       id="select__content"
+      v-model="selected"
     >
-      <option value="category">Category</option>
-      <option value="connectivity">Connectivity</option>
-      <option value="favorites">Favorites</option>
+      <option
+        v-for="option of options"
+        :key="option.value"
+        :value="option.value"
+        v-text="option.name"
+      />
     </select>
   </div>
 </template>
 
 <script>
 export default {
-
+  name: 'Select',
+  data() {
+    return {
+      selected: 'category',
+      options: [
+        {
+          name: 'Category',
+          value: 'category',
+        },
+        {
+          name: 'Connectivity',
+          value: 'connectivity',
+        },
+        {
+          name: 'Favorites',
+          value: 'favorites',
+        },
+      ],
+    };
+  },
+  watch: {
+    selected: {
+      handler() {
+        alert('add implementation of select');
+      },
+    },
+  },
 };
 </script>
 
