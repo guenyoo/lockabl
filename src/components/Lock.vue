@@ -67,6 +67,9 @@ export default {
   },
   methods: {
     showDetails(id) {
+      if (this.isLarge) {
+        return;
+      }
       this.$router.push(`/locks/${id}`);
     },
   },

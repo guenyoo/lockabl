@@ -26,6 +26,7 @@
       </Accordeon>
       <AddLock />
     </div>
+    <Footer />
   </div>
 </template>
 
@@ -36,6 +37,7 @@ import Header from '@/components/Header/Header.vue';
 import Lock from '@/components/Lock.vue';
 import AddLock from '@/components/AddLock.vue';
 import Select from '@/components/Select.vue';
+import Footer from '@/components/Footer.vue';
 
 export default {
   name: 'Home',
@@ -63,6 +65,7 @@ export default {
     Lock,
     AddLock,
     Select,
+    Footer,
   },
   computed: {
     ...mapState('lockStore', ['locks']),

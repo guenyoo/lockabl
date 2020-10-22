@@ -7,17 +7,19 @@
       class="login__logo"
     >
     <LogIn />
+    <Footer />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import LogIn from '@/components/LogIn.vue';
+import Footer from '@/components/Footer.vue';
 
 export default {
   name: 'Home',
   components: {
     LogIn,
+    Footer,
   },
 };
 </script>

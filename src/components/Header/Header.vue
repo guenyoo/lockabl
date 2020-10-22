@@ -38,11 +38,11 @@ export default {
 
   &__logo {
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    max-width: 100%;
-    max-height: 100%;
+    transform: translate(-50%, -50%);
+    max-width: 80%;
+    max-height: 80%;
   }
 }
 </style>

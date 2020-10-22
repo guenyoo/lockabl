@@ -19,6 +19,7 @@ export default {
 .add-lock {
   display: flex;
   align-items: center;
+  margin-bottom: 20px;
 
   @media (any-hover: hover) {
     &:hover {

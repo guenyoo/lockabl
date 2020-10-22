@@ -1,91 +1,101 @@
 <template>
   <div class="v-locks">
-    <Back />
-    <h1 class="v-locks__headline">
-      {{ lockDetails.name }} <i class="icofont-pencil-alt-2 icofont" />
-    </h1>
-    <div class="v-locks__content">
-      <Lock
-        :id="lockDetails.id"
-        :color="lockDetails.color"
-        :key="lockDetails.name"
-        :name="lockDetails.name"
-        :isFavorite="lockDetails.favorite"
-        :hasConnectivity="!!lockDetails.connectivity"
-        isLarge
-        isEdit
-      />
-      <div class="v-locks__signal signal">
-        <p class="signal__headline">Signal Strength</p>
-        <img
-          class="signal__img"
-          :src="require(`@/assets/svgs/strength_${getSignalStrength}.svg`)"
-          alt="Signal strength"
-        >
-        <p class="signal__value">{{ signalStrength.toFixed(0) }}%</p>
-      </div>
-    </div>
-    <div class="v-locks__buttons">
-      <Button
-        :text="textByStatus"
-        colorText="#00ff00"
-        colorBackground="green"
-        :disabled="checkStatus"
-      />
-      <Button
-        :text="textByFavorites"
-        :colorText="COLORS.PRIMARY"
-        colorBackground="blue"
-      />
-      <Button
-        text="<strong>Share</strong> with <strong>Friends / Family</strong>"
-        :colorText="COLORS.PRIMARY"
-        colorBackground="blue"
-      />
-    </div>
-    <div
-      class="v-locks__shared shared"
-      v-if="lockDetails.sharedWith.length"
-    >
-      <p class="v-locks__label shared__label">
-        This lock is currently <strong>shared with</strong>:
-      </p>
-      <div class="shared__content">
-        <div
-          class="shared__loop"
-          v-for="sharedLock of lockDetails.sharedWith"
-          :key="sharedLock.userId"
-
-        >
-          <Lock
-            class="shared__lock"
-            :id="lockDetails.id"
-            :color="sharedLock.color"
-            :name="sharedLock.name"
-            :hasConnectivity="true"
-          />
-          <Button
-            text="Revoke Access"
-            :colorText="COLORS.PRIMARY"
-            colorBackground="neutral"
-            @click.native="removeFromShared({ lockId: lockDetails.id, uid: sharedLock.userId })"
-          />
+    <div class="u-content">
+      <Back />
+      <h1
+        class="v-locks__headline"
+        @click="alert('add implementation of name change')"
+      >
+        {{ lockDetails.name }} <i class="icofont-pencil-alt-2 icofont" />
+      </h1>
+      <div class="v-locks__content">
+        <Lock
+          :id="lockDetails.id"
+          :color="lockDetails.color"
+          :key="lockDetails.name"
+          :name="lockDetails.name"
+          :isFavorite="lockDetails.favorite"
+          :hasConnectivity="!!lockDetails.connectivity"
+          isLarge
+          isEdit
+          @click.native="alert('add implementation of imgs/colors')"
+        />
+        <div class="v-locks__signal signal">
+          <p class="signal__headline">Signal Strength</p>
+          <img
+            class="signal__img"
+            :src="require(`@/assets/svgs/strength_${getSignalStrength}.svg`)"
+            alt="Signal strength"
+          >
+          <p class="signal__value">{{ signalStrength.toFixed(0) }}%</p>
         </div>
       </div>
+      <div class="v-locks__buttons">
+        <Button
+          :text="textByStatus"
+          colorText="#00ff00"
+          colorBackground="green"
+          :disabled="checkStatus"
+          @click.native="alert('add unlock implementation')"
+        />
+        <Button
+          :text="textByFavorites"
+          :colorText="COLORS.PRIMARY"
+          colorBackground="blue"
+          @click.native="alert('add favorites implementation')"
+        />
+        <Button
+          text="<strong>Share</strong> with <strong>Friends / Family</strong>"
+          :colorText="COLORS.PRIMARY"
+          colorBackground="blue"
+          @click.native="alert('add sharing implementation')"
+        />
+      </div>
+      <div
+        class="v-locks__shared shared"
+        v-if="lockDetails.sharedWith.length"
+      >
+        <p class="v-locks__label shared__label">
+          This lock is currently <strong>shared with</strong>:
+        </p>
+        <div class="shared__content">
+          <div
+            class="shared__loop"
+            v-for="sharedLock of lockDetails.sharedWith"
+            :key="sharedLock.userId"
+
+          >
+            <Lock
+              class="shared__lock"
+              :id="lockDetails.id"
+              :color="sharedLock.color"
+              :name="sharedLock.name"
+              :hasConnectivity="true"
+            />
+            <Button
+              text="Revoke Access"
+              :colorText="COLORS.PRIMARY"
+              colorBackground="neutral"
+              @click.native="removeFromShared({ lockId: lockDetails.id, uid: sharedLock.userId })"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="v-locks__help">
+        <p class="v-locks__label">Do you <strong>need help</strong> with this lock?</p>
+        <Button
+          text="<strong>Get help</strong> from <strong>support</strong> (opens Browser)"
+          :colorText="COLORS.PRIMARY"
+          colorBackground="yellow"
+        />
+        <Button
+          text="<strong>FAQ</strong> pages (opens browser)"
+          :colorText="COLORS.PRIMARY"
+          colorBackground="yellow"
+        />
+      </div>
     </div>
-    <div class="v-locks__help">
-      <p class="v-locks__label">Do you <strong>need help</strong> with this lock?</p>
-      <Button
-        text="<strong>Get help</strong> from <strong>support</strong> (opens Browser)"
-        :colorText="COLORS.PRIMARY"
-        colorBackground="yellow"
-      />
-      <Button
-        text="<strong>FAQ</strong> pages (opens browser)"
-        :colorText="COLORS.PRIMARY"
-        colorBackground="yellow"
-      />
-    </div>
+    <Footer />
   </div>
 </template>
 
@@ -93,6 +103,7 @@
 import { mapState, mapActions } from 'vuex';
 import Back from '@/components/Back.vue';
 import Lock from '@/components/Lock.vue';
+import Footer from '@/components/Footer.vue';
 import Button from '@/components/base/Button.vue';
 import { COLORS } from '@/config/colors';
 import { LOCKSTATUS } from '@/config/status';
@@ -109,6 +120,7 @@ export default {
     Back,
     Lock,
     Button,
+    Footer,
   },
   data() {
     return {
@@ -171,6 +183,9 @@ export default {
   },
   methods: {
     ...mapActions('lockStore', ['removeFromShared']),
+    alert(msg) {
+      window.alert(msg);
+    },
   },
   mounted() {
     // to simulate some interaction
