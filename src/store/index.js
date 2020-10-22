@@ -61,6 +61,9 @@ export default new Vuex.Store({
         changeLockStatus({ commit }, { lockId, newStatus }) {
           commit('changeLockStatus', { lockId, newStatus });
         },
+        changeFavStatus({ commit }, { lockId }) {
+          commit('changeFavStatus', { lockId });
+        },
       },
       mutations: {
         setSharedAccess(state, { id, arr }) {
@@ -68,6 +71,12 @@ export default new Vuex.Store({
         },
         changeLockStatus(state, { lockId, newStatus }) {
           state.locks.find((lock) => lock.id === lockId).status = newStatus;
+        },
+        changeFavStatus(state, { lockId }) {
+          state
+            .locks
+            .find((lock) => lock.id === lockId)
+            .favorite = !state.locks.find((lock) => lock.id === lockId).favorite;
         },
       },
     },

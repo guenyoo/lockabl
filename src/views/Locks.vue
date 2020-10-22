@@ -43,7 +43,7 @@
           :text="textByFavorites"
           :colorText="COLORS.PRIMARY"
           colorBackground="blue"
-          @click.native="alert('add favorites implementation')"
+          @click.native="changeFavoriteStatus()"
         />
         <Button
           text="<strong>Share</strong> with <strong>Friends / Family</strong>"
@@ -186,7 +186,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions('lockStore', ['removeFromShared', 'changeLockStatus']),
+    ...mapActions('lockStore', ['removeFromShared', 'changeLockStatus', 'changeFavStatus']),
     alert(msg) {
       window.alert(msg);
     },
@@ -204,6 +204,11 @@ export default {
           });
         }, 1000);
       }
+    },
+    changeFavoriteStatus() {
+      this.changeFavStatus({
+        lockId: this.lockDetails.id,
+      });
     },
   },
   mounted() {
