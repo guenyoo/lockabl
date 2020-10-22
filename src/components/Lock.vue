@@ -105,6 +105,16 @@ export default {
     background: radial-gradient(80.71% 158.59% at 50% 112.12%, #FF0000 0%, #FF0000 100%);
   }
 
+  &--bicycle {
+    background: url('~@/assets/imgs/bicycle.jpg') no-repeat no-repeat;
+    background-size: cover;
+  }
+
+  &--scooter {
+    background: url('~@/assets/imgs/scooter2.png') no-repeat no-repeat;
+    background-size: cover;
+  }
+
   &--not-in-range {
     opacity: .5;
   }

@@ -1,10 +1,12 @@
+import { BACKGROUNDS } from './backgrounds';
+
 const LOCKS = [
   {
     id: 0,
     name: 'Bicycle',
     connectivity: 77,
-    img: false,
-    color: 'blue',
+    img: BACKGROUNDS.BICYCLE.IMG,
+    color: BACKGROUNDS.BICYCLE.NAME,
     status: 'locked',
     favorite: true,
     sharedWith: [],
@@ -13,8 +15,8 @@ const LOCKS = [
     id: 1,
     name: 'Scooter',
     connectivity: 35,
-    img: false,
-    color: 'purple',
+    img: BACKGROUNDS.SCOOTER.IMG,
+    color: BACKGROUNDS.SCOOTER.NAME,
     status: 'locked',
     favorite: false,
     sharedWith: [],
@@ -23,8 +25,8 @@ const LOCKS = [
     id: 2,
     name: 'Lock with really really long name',
     connectivity: 0,
-    img: false,
-    color: 'red',
+    img: BACKGROUNDS.RED.IMG,
+    color: BACKGROUNDS.RED.NAME,
     status: 'unlocked',
     favorite: true,
     sharedWith: [
@@ -39,6 +41,16 @@ const LOCKS = [
         color: 'blue',
       },
     ],
+  },
+  {
+    id: 3,
+    name: 'Bureau',
+    connectivity: 45,
+    img: BACKGROUNDS.BLUE.IMG,
+    color: BACKGROUNDS.BLUE.NAME,
+    status: 'unlocked',
+    favorite: true,
+    sharedWith: [],
   },
 ];
 

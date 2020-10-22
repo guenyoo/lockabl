@@ -80,6 +80,7 @@ export default {
 .home {
   &__flex-wrapper {
     display: flex;
+    flex-wrap: wrap;
   }
 }
 </style>

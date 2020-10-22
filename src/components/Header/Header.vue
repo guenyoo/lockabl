@@ -34,7 +34,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 0 10px;
-  margin-bottom: 20px;
+  margin: 0 -10px 20px -10px;
 
   &__logo {
     position: absolute;
