@@ -42,7 +42,9 @@ export default new Vuex.Store({
       },
       getters: {
         locksSortedByConnectivity:
-          (state) => state.locks.sort((a, b) => b.connectivity - a.connectivity),
+          (state) => state.locks
+            .filter((lock) => lock.connectivity)
+            .sort((a, b) => b.connectivity - a.connectivity),
         locksWithoutConnectivity: (state) => state.locks.filter((lock) => lock.connectivity === 0),
         sharedLocks: (state) => state.locks.filter((lock) => lock.sharedWith.length > 0),
       },

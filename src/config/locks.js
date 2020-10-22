@@ -52,6 +52,16 @@ const LOCKS = [
     favorite: true,
     sharedWith: [],
   },
+  {
+    id: 4,
+    name: 'Garage',
+    connectivity: 0,
+    img: BACKGROUNDS.GREEN.IMG,
+    color: BACKGROUNDS.GREEN.NAME,
+    status: 'locked',
+    favorite: false,
+    sharedWith: [],
+  },
 ];
 
 const SHARED = [

@@ -2,6 +2,7 @@
   <div class="home">
     <Header />
     <div class="u-content">
+      <Select />
       <Accordeon
         v-for="category in filteredCategories"
         :key="category.title"
@@ -34,6 +35,7 @@ import Accordeon from '@/components/Accordeon.vue';
 import Header from '@/components/Header/Header.vue';
 import Lock from '@/components/Lock.vue';
 import AddLock from '@/components/AddLock.vue';
+import Select from '@/components/Select.vue';
 
 export default {
   name: 'Home',
@@ -60,6 +62,7 @@ export default {
     Header,
     Lock,
     AddLock,
+    Select,
   },
   computed: {
     ...mapState('lockStore', ['locks']),

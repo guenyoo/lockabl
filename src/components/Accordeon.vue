@@ -44,10 +44,10 @@ export default {
     max-width: 20px;
     transition: .3s transform ease-out;
     margin-right: 10px;
-  }
 
-  &--toggled {
-    transform: rotate(-90deg);
+    &--toggled {
+      transform: rotate(-90deg);
+    }
   }
 
   &__title {
