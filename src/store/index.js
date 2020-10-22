@@ -15,8 +15,7 @@ export default new Vuex.Store({
     user: {
       namespaced: true,
       state: {
-        // TODO: change this to false
-        userAuthenticated: true,
+        userAuthenticated: false,
       },
       mutations: {
         userAuthenticated(state) {
