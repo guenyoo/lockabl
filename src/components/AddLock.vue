@@ -2,7 +2,10 @@
   <div class="add-lock">
     <div class="add-lock__icon" />
     <p class="add-lock__label">
-      <strong>Add</strong> new Lock
+      <span class="add-lock__label-text">
+        <strong>Add</strong> new Lock
+      </span>
+      <span class="add-lock__browser">(opens Browser)</span>
     </p>
   </div>
 </template>
@@ -55,6 +58,14 @@ export default {
 
   &__label {
     font-size: 24px;
+  }
+
+  &__label-text {
+    display: block;
+  }
+
+  &__browser {
+    font-size: 18px;
   }
 }
 </style>
