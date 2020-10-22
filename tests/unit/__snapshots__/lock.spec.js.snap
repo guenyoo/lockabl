@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Lock.vue matches the snapshot 1`] = `
+<div class="lock">
+  <!---->
+  <!---->
+  <h1 class="lock__name">Bike</h1>
+</div>
+`;

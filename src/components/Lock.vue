@@ -15,7 +15,7 @@
       v-if="isEdit"
     />
     <img
-      v-show="isFavorite"
+      v-if="isFavorite"
       src="@/assets/svgs/heart.svg"
       class="lock__favorite"
     >
