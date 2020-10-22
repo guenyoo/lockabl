@@ -1,5 +1,6 @@
 <template>
   <div class="v-locks">
+    <Header />
     <div class="u-content">
       <Back />
       <h1
@@ -87,11 +88,13 @@
           text="<strong>Get help</strong> from <strong>support</strong> (opens Browser)"
           :colorText="COLORS.PRIMARY"
           colorBackground="yellow"
+          @click.native="alert('open support page')"
         />
         <Button
           text="<strong>FAQ</strong> pages (opens browser)"
           :colorText="COLORS.PRIMARY"
           colorBackground="yellow"
+          @click.native="alert('open FAQ page')"
         />
       </div>
     </div>
@@ -105,6 +108,7 @@ import Back from '@/components/Back.vue';
 import Lock from '@/components/Lock.vue';
 import Footer from '@/components/Footer.vue';
 import Button from '@/components/base/Button.vue';
+import Header from '@/components/Header/Header.vue';
 import { COLORS } from '@/config/colors';
 import { LOCKSTATUS } from '@/config/status';
 
@@ -121,6 +125,7 @@ export default {
     Lock,
     Button,
     Footer,
+    Header,
   },
   data() {
     return {

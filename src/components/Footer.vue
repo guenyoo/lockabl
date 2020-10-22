@@ -14,7 +14,7 @@ export default {
 @import '@/scss/colors.scss';
 
 .footer {
-  height: 30px;
+  height: 50px;
   background: $secondary;
   display: flex;
   align-items: center;
