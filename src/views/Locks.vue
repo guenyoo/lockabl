@@ -7,7 +7,11 @@
         class="v-locks__headline"
         @click="alert('add implementation of name change')"
       >
-        {{ lockDetails.name }} <i class="icofont-pencil-alt-2 icofont" />
+        {{ lockDetails.name }}
+        <i
+          class="icofont-pencil-alt-2 icofont"
+          v-if="!lockDetails.isShared"
+        />
       </h1>
       <div class="v-locks__content">
         <Lock
@@ -18,7 +22,7 @@
           :isFavorite="lockDetails.favorite"
           :hasConnectivity="!!lockDetails.connectivity"
           isLarge
-          isEdit
+          :isEdit="!lockDetails.isShared"
           @click.native="alert('add implementation of imgs/colors')"
         />
         <div class="v-locks__signal signal">
@@ -46,6 +50,7 @@
           @click.native="changeFavoriteStatus()"
         />
         <Button
+          v-if="!lockDetails.isShared"
           text="<strong>Share</strong> with <strong>Friends / Family</strong>"
           :colorText="COLORS.PRIMARY"
           colorBackground="blue"
@@ -54,7 +59,7 @@
       </div>
       <div
         class="v-locks__shared shared"
-        v-if="lockDetails.sharedWith.length"
+        v-if="lockDetails.sharedWith.length && !lockDetails.isShared"
       >
         <p class="v-locks__label shared__label">
           This lock is currently <strong>shared with</strong>:
@@ -134,9 +139,10 @@ export default {
     };
   },
   computed: {
-    ...mapState('lockStore', ['locks']),
+    ...mapState('lockStore', ['locks', 'shared']),
     lockDetails() {
-      return this.locks.find((lock) => lock.id === parseInt(this.$route.params.lockId, 10));
+      return this.locks.find((lock) => lock.id === parseInt(this.$route.params.lockId, 10))
+        || this.shared.find((lock) => lock.id === parseInt(this.$route.params.lockId, 10));
     },
     getSignalStrength() {
       if (this.signalStrength <= 10) return 0;

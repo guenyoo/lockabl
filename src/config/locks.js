@@ -9,7 +9,18 @@ const LOCKS = [
     color: BACKGROUNDS.BICYCLE.NAME,
     status: 'locked',
     favorite: true,
-    sharedWith: [],
+    sharedWith: [
+      {
+        name: 'Mausi',
+        userId: 133,
+        color: 'purple',
+      },
+      {
+        name: 'Basti',
+        userId: 112,
+        color: 'green',
+      },
+    ],
   },
   {
     id: 1,
@@ -66,7 +77,7 @@ const LOCKS = [
 
 const SHARED = [
   {
-    id: 0,
+    id: 911,
     name: 'Bicycle',
     connectivity: 50,
     img: false,

@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { LOCKS } from '../config/locks';
+import { LOCKS, SHARED } from '../config/locks';
 
 Vue.use(Vuex);
 
@@ -38,6 +38,7 @@ export default new Vuex.Store({
       namespaced: true,
       state: {
         locks: LOCKS,
+        shared: SHARED,
       },
       getters: {
         locksSortedByConnectivity:
@@ -45,7 +46,7 @@ export default new Vuex.Store({
             .filter((lock) => lock.connectivity)
             .sort((a, b) => b.connectivity - a.connectivity),
         locksWithoutConnectivity: (state) => state.locks.filter((lock) => lock.connectivity === 0),
-        sharedLocks: (state) => state.locks.filter((lock) => lock.sharedWith.length > 0),
+        sharedLocks: (state) => (state.shared.length > 0 ? state.shared : []),
       },
       actions: {
         removeFromShared({ state, commit }, { lockId, uid }) {
