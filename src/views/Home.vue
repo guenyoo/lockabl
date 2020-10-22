@@ -1,27 +1,30 @@
 <template>
   <div class="home">
     <Header />
-    <Accordeon
-      v-for="category in filteredCategories"
-      :key="category.title"
-    >
-      <template v-slot:title>
-        <span>{{ category.title }}</span>
-      </template>
-      <template v-slot:content>
-        <div class="home__flex-wrapper">
-          <Lock
-          v-for="lock in category.locks"
-          :id="lock.id"
-          :color="lock.color"
-          :key="lock.name"
-          :name="lock.name"
-          :isFavorite="lock.favorite"
-          :hasConnectivity="!!lock.connectivity"
-        />
-        </div>
-      </template>
-    </Accordeon>
+    <div class="u-content">
+      <Accordeon
+        v-for="category in filteredCategories"
+        :key="category.title"
+      >
+        <template v-slot:title>
+          <span>{{ category.title }}</span>
+        </template>
+        <template v-slot:content>
+          <div class="home__flex-wrapper">
+            <Lock
+            v-for="lock in category.locks"
+            :id="lock.id"
+            :color="lock.color"
+            :key="lock.name"
+            :name="lock.name"
+            :isFavorite="lock.favorite"
+            :hasConnectivity="!!lock.connectivity"
+          />
+          </div>
+        </template>
+      </Accordeon>
+      <AddLock />
+    </div>
   </div>
 </template>
 
@@ -30,6 +33,7 @@ import { mapState, mapGetters } from 'vuex';
 import Accordeon from '@/components/Accordeon.vue';
 import Header from '@/components/Header/Header.vue';
 import Lock from '@/components/Lock.vue';
+import AddLock from '@/components/AddLock.vue';
 
 export default {
   name: 'Home',
@@ -55,6 +59,7 @@ export default {
     Accordeon,
     Header,
     Lock,
+    AddLock,
   },
   computed: {
     ...mapState('lockStore', ['locks']),

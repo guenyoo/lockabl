@@ -30,6 +30,7 @@
         :text="textByStatus"
         colorText="#00ff00"
         colorBackground="green"
+        :disabled="checkStatus"
       />
       <Button
         :text="textByFavorites"
@@ -94,6 +95,7 @@ import Back from '@/components/Back.vue';
 import Lock from '@/components/Lock.vue';
 import Button from '@/components/base/Button.vue';
 import { COLORS } from '@/config/colors';
+import { LOCKSTATUS } from '@/config/status';
 
 export default {
   name: 'LockDetailView',
@@ -127,6 +129,12 @@ export default {
       if (this.signalStrength > 50 && this.signalStrength <= 75) return 75;
       return 100;
     },
+    checkStatus() {
+      if (this.lockDetails.status === LOCKSTATUS.UNLOCKED) {
+        return true;
+      }
+      return false;
+    },
     textByStatus() {
       let buttonText;
       switch (this.lockDetails.status) {
@@ -134,7 +142,7 @@ export default {
           buttonText = '<strong>Unlock</strong>';
           break;
         case 'unlocked':
-          buttonText = '<strong>Lock</strong>';
+          buttonText = 'Please lock <strong>manually</strong>';
           break;
         case 'unlocking':
           buttonText = '<strong>Unlocking</strong> ...';

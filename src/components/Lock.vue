@@ -14,17 +14,16 @@
       class="lock__icon icofont-pencil-alt-2"
       v-if="isEdit"
     />
+    <img
+      v-show="isFavorite"
+      src="@/assets/svgs/heart.svg"
+      class="lock__favorite"
+    >
     <h1
       class="lock__name"
       :class="{ 'lock__name--is-large': isLarge }"
       v-text="name"
     />
-    <span
-      v-show="isFavorite"
-      class="lock__favorite"
-    >
-      💙
-    </span>
   </div>
 </template>
 
@@ -127,11 +126,11 @@ export default {
   }
 
   &__favorite {
-    top: 10px;
-    right: 10px;
+    top: 5px;
+    right: 5px;
     position: absolute;
-    width: 10px;
-    height: 10px;
+    width: 20px;
+    height: 20px;
   }
 
   &--is-large {

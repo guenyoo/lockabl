@@ -59,12 +59,6 @@ export default {
   cursor: pointer;
   margin-bottom: 20px;
 
-  &--disabled {
-    background-color: #cdcdcd;
-    pointer-events: none;
-    cursor: not-allowed;
-  }
-
   &--neutral {
     background: linear-gradient(180deg, #D8E0D8 0%, #CFCFCF 100%);
     color: $neutral;
@@ -88,6 +82,13 @@ export default {
   &--green {
     background: linear-gradient(180deg, #86EC8A 0%, #35CD69 100%);
     color: $green;
+  }
+
+  &--disabled {
+    background-color: #cdcdcd;
+    color: $neutral;
+    pointer-events: none;
+    cursor: not-allowed;
   }
 }
 </style>
