@@ -65,6 +65,11 @@ export default {
     cursor: not-allowed;
   }
 
+  &--neutral {
+    background: linear-gradient(180deg, #D8E0D8 0%, #CFCFCF 100%);
+    color: $neutral;
+  }
+
   &--blue {
     background: linear-gradient(180deg, #C2F0FF 0%, #A3E8FF 100%);
     color: $primary;
@@ -77,7 +82,7 @@ export default {
 
   &--red {
     background: radial-gradient(80.71% 158.59% at 50% 112.12%, #FF0000 0%, #FF0000 100%);
-    color: $red;
+    color: black;
   }
 
   &--green {

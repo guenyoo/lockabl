@@ -33,6 +33,11 @@ const LOCKS = [
         userId: 12,
         color: 'green',
       },
+      {
+        name: 'Papa',
+        userId: 13,
+        color: 'blue',
+      },
     ],
   },
 ];

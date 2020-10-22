@@ -27,17 +27,17 @@
     </div>
     <div class="v-locks__buttons">
       <Button
-        text="textByStatus()"
+        :text="textByStatus"
         colorText="#00ff00"
         colorBackground="green"
       />
       <Button
-        text="textByFavorites"
+        :text="textByFavorites"
         :colorText="COLORS.PRIMARY"
         colorBackground="blue"
       />
       <Button
-        text="textBySharing"
+        text="<strong>Share</strong> with <strong>Friends / Family</strong>"
         :colorText="COLORS.PRIMARY"
         colorBackground="blue"
       />
@@ -50,30 +50,37 @@
         This lock is currently <strong>shared with</strong>:
       </p>
       <div class="shared__content">
-        <Lock
-          class="shared__lock"
+        <div
+          class="shared__loop"
           v-for="sharedLock of lockDetails.sharedWith"
           :key="sharedLock.userId"
-          :id="lockDetails.id"
-          :color="sharedLock.color"
-          :name="sharedLock.name"
-          :hasConnectivity="true"
-        />
-        <Button
-          text="Revoke Access"
-          :colorText="COLORS.PRIMARY"
-        />
+
+        >
+          <Lock
+            class="shared__lock"
+            :id="lockDetails.id"
+            :color="sharedLock.color"
+            :name="sharedLock.name"
+            :hasConnectivity="true"
+          />
+          <Button
+            text="Revoke Access"
+            :colorText="COLORS.PRIMARY"
+            colorBackground="neutral"
+            @click.native="removeFromShared({ lockId: lockDetails.id, uid: sharedLock.userId })"
+          />
+        </div>
       </div>
     </div>
     <div class="v-locks__help">
       <p class="v-locks__label">Do you <strong>need help</strong> with this lock?</p>
       <Button
-        text="Get help from support (opens Browser)"
+        text="<strong>Get help</strong> from <strong>support</strong> (opens Browser)"
         :colorText="COLORS.PRIMARY"
         colorBackground="yellow"
       />
       <Button
-        text="FAQ pages (opens browser)"
+        text="<strong>FAQ</strong> pages (opens browser)"
         :colorText="COLORS.PRIMARY"
         colorBackground="yellow"
       />
@@ -82,7 +89,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import Back from '@/components/Back.vue';
 import Lock from '@/components/Lock.vue';
 import Button from '@/components/base/Button.vue';
@@ -114,12 +121,48 @@ export default {
       return this.locks.find((lock) => lock.id === parseInt(this.$route.params.lockId, 10));
     },
     getSignalStrength() {
-      if (this.signalStrength === 0) return 0;
-      if (this.signalStrength > 0 && this.signalStrength <= 25) return 25;
+      if (this.signalStrength <= 10) return 0;
+      if (this.signalStrength > 10 && this.signalStrength <= 25) return 25;
       if (this.signalStrength > 25 && this.signalStrength <= 50) return 50;
       if (this.signalStrength > 50 && this.signalStrength <= 75) return 75;
       return 100;
     },
+    textByStatus() {
+      let buttonText;
+      switch (this.lockDetails.status) {
+        case 'locked':
+          buttonText = '<strong>Unlock</strong>';
+          break;
+        case 'unlocked':
+          buttonText = '<strong>Lock</strong>';
+          break;
+        case 'unlocking':
+          buttonText = '<strong>Unlocking</strong> ...';
+          break;
+        default:
+          buttonText = '<strong>Unlock</strong>';
+          break;
+      }
+      return buttonText;
+    },
+    textByFavorites() {
+      let buttonText;
+      switch (this.lockDetails.favorite) {
+        case true:
+          buttonText = '<strong>Remove</strong> from <strong>Favorites</strong>';
+          break;
+        case false:
+          buttonText = '<strong>Add</strong> to <strong>Favorites</strong>';
+          break;
+        default:
+          buttonText = '<strong>Add</strong> to <strong>Favorites</strong>';
+          break;
+      }
+      return buttonText;
+    },
+  },
+  methods: {
+    ...mapActions('lockStore', ['removeFromShared']),
   },
   mounted() {
     // to simulate some interaction
@@ -130,6 +173,9 @@ export default {
       this.signalStrength = this.locks[this.$route.params.lockId].connectivity;
       this.signalStrength += range(Math.random());
       this.signalStrength -= range(Math.random());
+      if (this.signalStrength < 0) {
+        this.signalStrength = 0;
+      }
     }, 750);
   },
   beforeDestroy() {
@@ -181,7 +227,7 @@ export default {
 }
 
 .shared {
-  &__content {
+  &__loop {
     display: flex;
     align-items: center;
     justify-content: center;

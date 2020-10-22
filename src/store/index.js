@@ -46,6 +46,23 @@ export default new Vuex.Store({
         locksWithoutConnectivity: (state) => state.locks.filter((lock) => lock.connectivity === 0),
         sharedLocks: (state) => state.locks.filter((lock) => lock.sharedWith.length > 0),
       },
+      actions: {
+        removeFromShared({ state, commit }, { lockId, uid }) {
+          const specificLock = state.locks.find((lock) => lock.id === lockId);
+          const sharedLocksWithSpecificLockRemoved = specificLock
+            .sharedWith
+            .filter((remove) => remove.userId !== uid);
+          commit('setSharedAccess', {
+            id: specificLock.id,
+            arr: sharedLocksWithSpecificLockRemoved,
+          });
+        },
+      },
+      mutations: {
+        setSharedAccess(state, { id, arr }) {
+          state.locks.find((lock) => lock.id === id).sharedWith = arr;
+        },
+      },
     },
   },
 });
