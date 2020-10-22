@@ -16,6 +16,15 @@ Just type anything into the form fields and press the submit button to continue,
 ## Testing
 I've added an example test file lock.spec.js which creates or checks for a snapshot of the Lock SFC. I've added just one test, but I believe unit tests are important and I didn't want to omit it.
 
+## Storybook
+I've added Storybook to this repository to show that I'm in favor of using a component explorer to easier grasp component states. To run storybook, do the following:
+
+```
+npm run storybook
+```
+
+I've setup the Button component as an example with different modifiers etc.
+
 ## What's missing
 - Impressum Page (because it's just an example really, but a website needs one)
 - Sort functionality on home path
